@@ -1,0 +1,71 @@
+#how to create table,INSERT,retrieve data,Update,delete,Drop table 
+
+
+import mysql.connector
+
+mydb=mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="Maya",
+    charset="utf8",
+    database="computer_revival"
+
+)
+
+mycursor=mydb.cursor()
+
+#CREATE TABLE 
+# ArtistTableSql = """CREATE TABLE Artists(
+# ID INT(20) PRIMARY KEY AUTO_INCREMENT,
+# NAME  CHAR(20) NOT NULL,
+# TRACK CHAR(10))"""
+# #if you want to create the database u will use create 
+# #mycursor.execute("create database comb")
+#if you want to delete the database u will use delete
+
+# mycursor.execute(ArtistTableSql)
+
+
+#INSERT
+# queries for inserting values
+insert1 = "INSERT INTO artists(NAME, TRACK) VALUES('Towang', 'Jazz');"
+insert2 = "INSERT INTO artists(NAME, TRACK) VALUES('Sadduz', 'Rock');"
+insert3 = "INSERT INTO artists(NAME, TRACK) VALUES('Pranu', 'shreya');"
+insert4 = "INSERT INTO artists(NAME, TRACK) VALUES('Mian', 'Dishant');"
+#executing the quires
+# mycursor.execute(insert1)
+# mycursor.execute(insert2)
+# mycursor.execute(insert3)
+# mycursor.execute(insert4)
+
+
+#retrieve the data from database 
+# queries for retrievint all rows
+# retrive = "Select * from artists;"
+# #executing the quires
+# mycursor.execute(retrive)
+# rows = mycursor.fetchall()
+# for row in rows:
+#    print(row)
+#it will print the all rows of database 
+
+#Update 
+#update will create new set name instead of old set name 
+updateSql = "UPDATE  artists SET NAME= 'Tawang'  WHERE ID = '1' ;"
+#mycursor.execute(updateSql)
+
+#delete
+#delete will delete the data from table 
+deleteSql = "DELETE FROM artists WHERE ID = '1'; "
+mycursor.execute(deleteSql )
+
+#Drop table 
+#Then the Artists table will be dropped from the database databaseName. 
+
+dropSql = "DROP TABLE IF EXISTS artists;"
+mycursor.execute(dropSql)
+
+
+#commiting the connection then closing it.
+mydb.commit()
+mydb.close()
